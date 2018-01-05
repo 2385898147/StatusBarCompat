@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         ft.commit();
     }
 
+    //改变标题
     private void changeTab(int page) {
         if (currentTab == page) {
             return;
