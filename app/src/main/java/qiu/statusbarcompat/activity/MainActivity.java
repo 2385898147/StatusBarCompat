@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     private HashMap<Integer,Fragment> fragments = new HashMap<>();
 
-    private RadioButton mCommon;
+    private RadioButton mCommons;
     private RadioButton mTranslucent;
     private RadioButton mCoordinator;
     private RadioButton mCollapsingToolbar;
@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         fragments.put(PAGE_COORDINATOR, new DrawerFragment());
         fragments.put(PAGE_COLLAPSING_TOOLBAR, new CollapsingToolbarFragment());
 
-        mCommon = (RadioButton) findViewById(R.id.common);
-        mCommon.setOnCheckedChangeListener(this);
+        mCommons = (RadioButton) findViewById(R.id.common);
+        mCommons.setOnCheckedChangeListener(this);
         mTranslucent = (RadioButton) findViewById(R.id.translucent);
         mTranslucent.setOnCheckedChangeListener(this);
         mCoordinator = (RadioButton) findViewById(R.id.coordinator);
@@ -57,11 +57,10 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         FragmentTransaction ft = MainActivity.this.getSupportFragmentManager().beginTransaction();
         ft.add(fragmentContentId, fragments.get(PAGE_COMMON));
         currentTab = PAGE_COMMON;
-        mCommon.setTextColor(getResources().getColor(R.color.colorAccent));
+        mCommons.setTextColor(getResources().getColor(R.color.colorAccent));
         ft.commit();
     }
 
-    //改变标题
     private void changeTab(int page) {
         if (currentTab == page) {
             return;
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         RadioButton button;
         switch (index){
             case PAGE_COMMON:
-                button = mCommon;
+                button = mCommons;
                 break;
             case PAGE_TRANSLUCENT:
                 button = mTranslucent;
@@ -97,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                 button = mCollapsingToolbar;
                 break;
             default:
-                button = mCommon;
+                button = mCommons;
         }
         button.setOnCheckedChangeListener(null);
         button.setChecked(check);
